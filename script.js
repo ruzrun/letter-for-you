@@ -4,6 +4,10 @@ function showLetter() {
   document.getElementById("introText").style.opacity = 0;
   document.querySelector(".btn").style.display = "none";
 
+  // Play looping song
+  const song = document.getElementById("song");
+  song.play();
+
   setTimeout(() => {
     const letterBox = document.getElementById("letterBox");
     const typedText = document.getElementById("typedText");
@@ -14,7 +18,7 @@ function showLetter() {
       if (i < message.length) {
         typedText.innerHTML += message.charAt(i);
         i++;
-        setTimeout(typeWriter, 30);
+        setTimeout(typeWriter, 50);
       }
     }
 
