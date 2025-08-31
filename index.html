@@ -12,11 +12,26 @@
     </div>
     <button class="btn" onclick="showLetter()">Read it</button>
 
-    <div class="letter" id="letterBox">
+    <div class="letter" id="letterBox" style="display: none;">
       <p id="typedText"></p>
       <img src="ttd.png" alt="Signature" class="signature" />
     </div>
 
-    <script src="script.js"></script>
+    <!-- Hidden looping audio -->
+    <audio id="song" src="mySong.mp3" loop></audio>
+
+    <script>
+      function showLetter() {
+        // Hide intro text
+        document.getElementById("introText").style.display = "none";
+
+        // Show the letter
+        document.getElementById("letterBox").style.display = "block";
+
+        // Play the looping song
+        const song = document.getElementById("song");
+        song.play();
+      }
+    </script>
   </body>
 </html>
