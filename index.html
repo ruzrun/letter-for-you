@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>A Letter for You</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="intro" id="introText">
+      i hope you read this, even if it's too late.
+    </div>
+    <button class="btn" onclick="showLetter()">Read it</button>
+
+    <div class="letter" id="letterBox">
+      <p id="typedText"></p>
+      <img src="ttd.png" alt="Signature" class="signature" />
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
