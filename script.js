@@ -4,7 +4,7 @@ const message = `I don’t even know if you’ll ever read this.\nBut if you do�
 const audio = new Audio("audio/mySong.mp3");
 
 // 🎯 Allowed special day (YYYY, MM-1, DD)
-const allowedDate = new Date(2025, 8, 6); // Feb 14, 2025
+const allowedDate = new Date(2025, 7, 6); // Oct 08, 2025
 
 function showLetter() {
   const now = new Date();
@@ -15,7 +15,7 @@ function showLetter() {
     now.getDate() === allowedDate.getDate();
 
   if (isSameDay) {
-    // ✅ Correct day → show letter
+    // Correct day to show letter
     document.getElementById("introText").style.opacity = 0;
     document.querySelector(".btn").style.display = "none";
 
@@ -39,16 +39,10 @@ function showLetter() {
 
     typeWriter();
   } else if (now < allowedDate) {
-    // ⏳ Too early
-    alert("Not yet... come back on February 14, 2025 ❤");
+    // Too early
+    alert("Birthday Damia tak sampai lagi... tunggu 8 Oktober boleh?");
   } else {
-    // ⛔ Too late
-    alert("Sorry... the letter was only available on February 14, 2025. The moment has passed 💔");
+    // Too late
+    alert("Sorry... Surat ni untuk hari birthday Damia je... ");
   }
 }
-
-
-
-
-
-
