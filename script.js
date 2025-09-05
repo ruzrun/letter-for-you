@@ -27,10 +27,11 @@ function showLetter() {
         typedText.innerHTML +=
           message.charAt(i) === "\n" ? "<br>" : message.charAt(i);
         i++;
-        setTimeout(typeWriter, 30); // typing speed
+        setTimeout(typeWriter, 60); // typing speed
       }
     }
 
     typeWriter();
   }, 600);
 }
+
