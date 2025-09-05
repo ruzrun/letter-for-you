@@ -14,8 +14,6 @@ function showLetter() {
     const typedText = document.getElementById("typedText");
 
     letterBox.style.display = "block";
-    typedText.innerHTML = ""; // reset if clicked again
-
     let i = 0;
 
     // play music once letter starts
@@ -34,4 +32,5 @@ function showLetter() {
     typeWriter();
   }, 600);
 }
+
 
