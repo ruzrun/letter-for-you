@@ -4,7 +4,7 @@ const message = `I don’t even know if you’ll ever read this.\nBut if you do�
 const audio = new Audio("audio/mySong.mp3");
 
 // 🎯 Allowed special day (YYYY, MM-1, DD)
-const allowedDate = new Date(2025, 8, 7); // Feb 14, 2025
+const allowedDate = new Date(2025, 3, 6); // Feb 14, 2025
 
 function showLetter() {
   const now = new Date();
@@ -46,6 +46,7 @@ function showLetter() {
     alert("Sorry... the letter was only available on February 14, 2025. The moment has passed 💔");
   }
 }
+
 
 
 
