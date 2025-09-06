@@ -3,6 +3,7 @@
   padding: 0;
   box-sizing: border-box;
 }
+
 body {
   font-family: "Georgia", serif;
   background: #1e1e2f;
@@ -10,10 +11,11 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  min-height: 100vh;   /* allow page to grow */
   flex-direction: column;
-  overflow: hidden;
+  overflow-x: hidden;  /* only hide horizontal scroll */
 }
+
 .intro {
   text-align: center;
   font-size: 1.4rem;
@@ -21,6 +23,7 @@ body {
   opacity: 1;
   transition: opacity 1s ease;
 }
+
 .btn {
   padding: 10px 20px;
   font-size: 1rem;
@@ -34,6 +37,7 @@ body {
 .btn:hover {
   background: #b1acad;
 }
+
 .letter {
   display: none;
   background: repeating-linear-gradient(
@@ -47,7 +51,7 @@ body {
   border-radius: 10px;
   width: 80%;
   max-width: 500px;
-  height: 600px;
+  max-height: 80vh;      /* responsive height */
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
   font-size: 1.1rem;
   line-height: 1.6;
@@ -56,12 +60,15 @@ body {
   white-space: pre-wrap;
   overflow-wrap: break-word;
   font-family: "Courier New", monospace;
-  overflow: visible;
+
+  overflow-y: auto;      /* add scroll inside if content too tall */
 }
+
 .letter p {
   margin-top: -55px;
   overflow: hidden;
 }
+
 .letter::before {
   content: "";
   position: absolute;
@@ -75,6 +82,7 @@ body {
   background-position: center;
   pointer-events: none;
 }
+
 .signature {
   position: absolute;
   bottom: -20px;
