@@ -9,17 +9,17 @@ body {
   background: #1e1e2f;
   color: #fff;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;  /* start from top */
   align-items: center;
-  min-height: 100vh;   /* allow page to grow */
+  min-height: 100vh;
   flex-direction: column;
-  overflow-x: hidden;  /* only hide horizontal scroll */
+  overflow-x: hidden;           /* allow vertical scroll */
 }
 
 .intro {
   text-align: center;
   font-size: 1.4rem;
-  margin-bottom: 30px;
+  margin: 30px 0;
   opacity: 1;
   transition: opacity 1s ease;
 }
@@ -51,7 +51,7 @@ body {
   border-radius: 10px;
   width: 80%;
   max-width: 500px;
-  max-height: 80vh;      /* responsive height */
+  margin: 40px auto;   /* spacing around the letter */
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
   font-size: 1.1rem;
   line-height: 1.6;
@@ -60,8 +60,6 @@ body {
   white-space: pre-wrap;
   overflow-wrap: break-word;
   font-family: "Courier New", monospace;
-
-  overflow-y: auto;      /* add scroll inside if content too tall */
 }
 
 .letter p {
