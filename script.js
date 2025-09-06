@@ -43,6 +43,7 @@ function showLetter() {
     alert("Birthday Damia tak sampai lagi... tunggu 8 Oktober boleh?");
   } else {
     // Too late
-    alert("Sorry... Surat ni untuk hari birthday Damia je... ");
+    alert("Sorry... Surat ni hanya untuk hari jadi Damia je... ");
   }
 }
+
