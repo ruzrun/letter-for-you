@@ -9,11 +9,12 @@ body {
   background: #1e1e2f;
   color: #fff;
   display: flex;
-  justify-content: flex-start;  /* start from top */
-  align-items: center;
+  justify-content: center;   /* center vertically */
+  align-items: center;       /* center horizontally */
   min-height: 100vh;
   flex-direction: column;
-  overflow-x: hidden;           /* allow vertical scroll */
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 .intro {
@@ -90,3 +91,4 @@ body {
   pointer-events: none;
   transform: rotate(-2deg);
 }
+
