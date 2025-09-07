@@ -4,20 +4,27 @@ const message = `I don’t even know if you’ll ever read this.\nBut if you do�
 // prepare audio
 const audio = new Audio("audio/mySong.mp3");
 
-// Allowed special day (YYYY, MM-1, DD)
-const allowedDate = new Date(2025, 8, 6); // Oct 08, 2025
+// Allowed date range (UTC) → 24 jam
+const allowedStart = new Date("2025-09-07T00:00:00Z"); 
+const allowedEnd   = new Date("2025-09-07T23:59:59Z");
 
-// Show letter
-function showLetter() {
-  const now = new Date();
+// Get global time from API
+async function getServerTime() {
+  try {
+    const res = await fetch("https://worldtimeapi.org/api/ip");
+    const data = await res.json();
+    return new Date(data.utc_datetime); // Masa global UTC
+  } catch (err) {
+    console.error("Failed to fetch server time:", err);
+    return new Date(); // fallback? guna masa device kalau API gagal
+  }
+}
 
-  // If the day is correct?
-  const isSameDay =
-    now.getFullYear() === allowedDate.getFullYear() &&
-    now.getMonth() === allowedDate.getMonth() &&
-    now.getDate() === allowedDate.getDate();
+// Show letter if valid date
+async function showLetter() {
+  const now = await getServerTime(); // masa global
 
-  if (isSameDay) {
+  if (now >= allowedStart && now <= allowedEnd) {
     // Correct day to show letter
     document.getElementById("introText").style.opacity = 0;
     document.querySelector(".btn").style.display = "none";
@@ -36,18 +43,17 @@ function showLetter() {
         typedText.innerHTML +=
           message.charAt(i) === "\n" ? "<br>" : message.charAt(i);
         i++;
-        setTimeout(typeWriter, 60); // Speed of TypedLetter
+        setTimeout(typeWriter, 60); // Speed typing
       }
     }
 
     typeWriter();
-  } else if (now < allowedDate) {
+
+  } else if (now < allowedStart) {
     // Too early
-    alert("Birthday Damia tak sampai lagi... tunggu 8 Oktober boleh?");
+    alert("Birthday Damia tak sampai lagi... tunggu 8 October boleh?");
   } else {
     // Too late
-    alert("Sorry... Surat ni hanya untuk hari jadi Damia... ");
-  }
+    alert("Sorry... Surat ni hanya untuk hari jadi Damia...");
+  }
 }
-
-
