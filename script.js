@@ -5,8 +5,8 @@ const message = `I don’t even know if you’ll ever read this.\nBut if you do�
 const audio = new Audio("audio/mySong.mp3");
 
 // Allowed date range (UTC) → 24 jam
-const allowedStart = new Date("2025-09-07T00:00:00Z"); 
-const allowedEnd   = new Date("2025-09-07T23:59:59Z");
+const allowedStart = new Date("2025-09-08T00:00:00Z"); 
+const allowedEnd   = new Date("2025-09-08T23:59:59Z");
 
 // Get global time from API
 async function getServerTime() {
@@ -57,3 +57,4 @@ async function showLetter() {
     alert("Sorry... Surat ni hanya untuk hari jadi Damia...");
   }
 }
+
