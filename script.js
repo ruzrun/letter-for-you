@@ -1,31 +1,35 @@
 // Letter messages
 const message = `I don’t even know if you’ll ever read this.\nBut if you do… I just want you to know, I still think about you sometimes.\n\nWe both tried. We both cared. But the universe just never gave us enough space to become “us.”\n\nI just wonder… if we had met at a different point in life, would the ending have been different?\n\nAnyway, I hope you're doing okay, even though we’re not in each other’s lives anymore.`;
 
-// prepare audio
+// Prepare audio
 const audio = new Audio("audio/mySong.mp3");
 
-// Allowed date range (UTC) → 24 jam
-const allowedStart = new Date("2025-09-08T00:00:00Z"); 
-const allowedEnd   = new Date("2025-09-08T23:59:59Z");
+// Allowed special day (YYYY, MM-1, DD)  8 Oktober 2025
+const allowedDate = new Date(2025, 9, 8); 
 
-// Get global time from API
+// --- Dapatkan masa server ---
 async function getServerTime() {
   try {
-    const res = await fetch("https://worldtimeapi.org/api/ip");
-    const data = await res.json();
-    return new Date(data.utc_datetime); // Masa global UTC
-  } catch (err) {
-    console.error("Failed to fetch server time:", err);
-    return new Date(); // fallback? guna masa device kalau API gagal
+    const response = await fetch("https://worldtimeapi.org/api/timezone/Asia/Kuala_Lumpur");
+    const data = await response.json();
+    return new Date(data.datetime); // masa dari server
+  } catch (e) {
+    console.error("Gagal dapat masa server, fallback ke masa local.");
+    return new Date(); // fallback kalau API gagal
   }
 }
 
-// Show letter if valid date
+// --- Show letter ---
 async function showLetter() {
-  const now = await getServerTime(); // masa global
+  const now = await getServerTime(); // guna masa server
 
-  if (now >= allowedStart && now <= allowedEnd) {
-    // Correct day to show letter
+  const isSameDay =
+    now.getFullYear() === allowedDate.getFullYear() &&
+    now.getMonth() === allowedDate.getMonth() &&
+    now.getDate() === allowedDate.getDate();
+
+  if (isSameDay) {
+    // Betul hari → tunjuk surat
     document.getElementById("introText").style.opacity = 0;
     document.querySelector(".btn").style.display = "none";
 
@@ -43,18 +47,16 @@ async function showLetter() {
         typedText.innerHTML +=
           message.charAt(i) === "\n" ? "<br>" : message.charAt(i);
         i++;
-        setTimeout(typeWriter, 60); // Speed typing
+        setTimeout(typeWriter, 60); // kelajuan typewriter
       }
     }
 
     typeWriter();
-
-  } else if (now < allowedStart) {
-    // Too early
-    alert("Birthday Damia tak sampai lagi... tunggu 8 October boleh?");
+  } else if (now < allowedDate) {
+    // Terlalu awal
+    alert("Birthday Damia tak sampai lagi... tunggu 8 Oktober boleh?");
   } else {
-    // Too late
+    // Terlambat
     alert("Sorry... Surat ni hanya untuk hari jadi Damia...");
-  }
+  }
 }
-
