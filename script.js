@@ -5,7 +5,7 @@ const message = `I don’t even know if you’ll ever read this.\nBut if you do�
 const audio = new Audio("audio/mySong.mp3");
 
 // Allowed special day (YYYY, MM-1, DD)  8 Oktober 2025
-const allowedDate = new Date(2025, 9, 8); 
+const allowedDate = new Date(2025, 8, 8); 
 
 // --- Dapatkan masa server ---
 async function getServerTime() {
@@ -60,3 +60,4 @@ async function showLetter() {
     alert("Sorry... Surat ni hanya untuk hari jadi Damia...");
   }
 }
+
