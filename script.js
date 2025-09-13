@@ -6,8 +6,8 @@ const audio = new Audio("audio/mySong.mp3");
 audio.loop = true; // audio akan repeat
 
 // Allowed range (24 jam penuh pada 8 Okt 2025)
-const allowedStart = new Date("2025-09-13T00:00:00+08:00"); 
-const allowedEnd   = new Date("2025-09-13T23:59:59+08:00");
+const allowedStart = new Date("2025-09-14T00:00:00+08:00"); 
+const allowedEnd   = new Date("2025-09-14T23:59:59+08:00");
 
 // masa bila surat boleh dibuka
 // start: 8 Okt 2025 jam 00:00
@@ -73,5 +73,6 @@ async function showLetter() {
     // Kalau bukak selepas tarikh dah lepas
   }
 }
+
 
 
