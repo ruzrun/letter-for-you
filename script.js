@@ -11,8 +11,8 @@ const audio = new Audio("audio/mySong.mp3");
 // Lokasi file "audio/mySong.mp3"
 
 // Allowed range (24 jam penuh pada 8 Okt 2025)
-const allowedStart = new Date("2025-10-08T00:00:00+08:00"); 
-const allowedEnd   = new Date("2025-10-08T23:59:59+08:00");
+const allowedStart = new Date("2025-09-13T00:00:00+08:00"); 
+const allowedEnd   = new Date("2025-09-13T23:59:59+08:00");
 
 // Tentukan masa bila surat boleh dibuka
 // Start: 8 Okt 2025 jam 00:00 (tengah malam)
@@ -81,3 +81,4 @@ async function showLetter() {
     // Kalau user cuba buka selepas tarikh berlalu
   }
 }
+
