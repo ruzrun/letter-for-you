@@ -6,12 +6,12 @@
 
 body {
   font-family: "Georgia", serif;
-  /* Animated gradient background */
-  background: linear-gradient(-45deg, #0f2027, #203a43, #2c5364, #1a1a2e);
+  /* Gradient lebih kontras */
+  background: linear-gradient(-45deg, #ff6b6b, #fddb92, #4facfe, #43e97b);
   background-size: 400% 400%;
-  animation: gradientShift 20s ease infinite;
+  animation: gradientShift 15s ease infinite;
 
-  /* Text + layout */
+  /* Layout */
   color: #fff;
   display: flex;
   justify-content: center;
@@ -21,12 +21,12 @@ body {
   overflow-x: hidden;
   overflow-y: auto;
 
-  /* Glow effect */
-  box-shadow: 0 0 60px rgba(255, 255, 255, 0.1) inset,
-              0 0 120px rgba(0, 200, 255, 0.2);
+  /* Glow ikut warna gradient */
+  box-shadow: 0 0 80px rgba(255, 255, 255, 0.25) inset,
+              0 0 120px rgba(255, 255, 255, 0.3);
 }
 
-/* Gradient animation */
+/* Animasi background */
 @keyframes gradientShift {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
@@ -109,3 +109,4 @@ body {
   pointer-events: none;
   transform: rotate(-2deg);
 }
+
