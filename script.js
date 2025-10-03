@@ -37,7 +37,8 @@ async function logVisit(note) {
     await fetch("https://script.google.com/macros/s/AKfycbwKpDkzed_La6bGbtC8gT32JlFQIMMnT8Tn1zvaFzFmzExpVwnX5yl8mOmhZdpCJO-K/exec", {
       method: "POST",
       body: JSON.stringify({ message: note }),
-      headers: { "Content-Type": "application/json" }
+      headers: { "Content-Type": "application/json" },
+      mode: "no-cors" // 🚀 penting untuk elak CORS error
     });
   } catch (err) {
     console.error("Log failed:", err);
@@ -93,6 +94,7 @@ async function showLetter() {
 }
 
 //Thanks you Damia... You will always be my favourite incomplete wish
+
 
 
 
