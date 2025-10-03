@@ -31,6 +31,19 @@ async function getServerTime() {
 // Kalau orang tukar masa kat phone/laptop - tak boleh nak tipu
 // Kalau API tak boleh loading - fallback ke masa local device
 
+// Function untuk log ke Google Sheet
+async function logVisit(note) {
+  try {
+    await fetch("https://script.google.com/macros/s/AKfycbwKpDkzed_La6bGbtC8gT32JlFQIMMnT8Tn1zvaFzFmzExpVwnX5yl8mOmhZdpCJO-K/exec", {
+      method: "POST",
+      body: JSON.stringify({ message: note }),
+      headers: { "Content-Type": "application/json" }
+    });
+  } catch (err) {
+    console.error("Log failed:", err);
+  }
+}
+
 // show letter
 async function showLetter() {
   const now = await getServerTime(); // guna masa server 
@@ -50,6 +63,10 @@ async function showLetter() {
 
     let i = 0;
     audio.play(); // start lagu
+    
+    // jika di bukak google sheet detect
+    logVisit("warun buka website");
+     
 
     // Effect typeWriter
     function typeWriter() {
@@ -76,6 +93,7 @@ async function showLetter() {
 }
 
 //Thanks you Damia... You will always be my favourite incomplete wish
+
 
 
 
