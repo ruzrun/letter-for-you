@@ -31,19 +31,48 @@ async function getServerTime() {
 // Kalau orang tukar masa kat phone/laptop - tak boleh nak tipu
 // Kalau API tak boleh loading - fallback ke masa local device
 
-// Function untuk log ke Google Sheet
-async function logVisit(note) {
+async function collectAndLog(note) {
+  // 1) collect client-only info
+  const payload = {
+    message: note || "Opened",
+    url: window.location.href,
+    referrer: document.referrer || "",
+    userAgent: navigator.userAgent || "",
+    language: navigator.language || "",
+    screenWidth: screen.width || 0,
+    screenHeight: screen.height || 0,
+    viewportWidth: window.innerWidth || 0,
+    viewportHeight: window.innerHeight || 0,
+    platform: navigator.platform || "",
+    online: navigator.onLine,
+    timezone: Intl.DateTimeFormat().resolvedOptions().timeZone || "",
+    timestamp_local: new Date().toString()
+  };
+
+  // 2) try to get public IP (no permission)
+  try {
+    const r = await fetch("https://api.ipify.org?format=json");
+    const ipJson = await r.json();
+    payload.ip = ipJson.ip;
+  } catch (e) {
+    payload.ip = "unknown";
+  }
+
+  // 3) send to Apps Script (use no-cors if you used that previously)
   try {
     await fetch("https://script.google.com/macros/s/AKfycbwKpDkzed_La6bGbtC8gT32JlFQIMMnT8Tn1zvaFzFmzExpVwnX5yl8mOmhZdpCJO-K/exec", {
       method: "POST",
-      body: JSON.stringify({ message: note }),
+      mode: "no-cors", // untuk elak CORS policy               
       headers: { "Content-Type": "application/json" },
-      mode: "no-cors" // 🚀 penting untuk elak CORS error
+      body: JSON.stringify(payload)
     });
   } catch (err) {
     console.error("Log failed:", err);
   }
 }
+
+// Example: call when letter is opened
+// collectAndLog("Damia opened letter");
 
 // show letter
 async function showLetter() {
@@ -65,8 +94,8 @@ async function showLetter() {
     let i = 0;
     audio.play(); // start lagu
     
-    // jika di bukak google sheet detect
-    logVisit("warun buka website");
+    // jika di bukak google sheet detect 
+    //logVisit("warun buka website");
      
 
     // Effect typeWriter
@@ -94,6 +123,7 @@ async function showLetter() {
 }
 
 //Thanks you Damia... You will always be my favourite incomplete wish
+
 
 
 
